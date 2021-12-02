@@ -6,7 +6,7 @@ def main():
 def calc():
     prev_depth = 0
     no_increases = 0
-    with open("day1\challenge1\input.txt", "r") as f:
+    with open("day1\input.txt", "r") as f:
         l = f.readlines()
         prev_depth = int(l[0])
         for i in range(1,len(l)):
