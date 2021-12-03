@@ -6,7 +6,7 @@ def main():
 def calc():
     prev_sum = 0
     no_increases = 0
-    with open("day1\input.txt", "r") as f:
+    with open("../input.txt", "r") as f:
         l = f.readlines()
         prev_sum += int(l[0]) + int(l[1]) + int(l[2])
         try:
