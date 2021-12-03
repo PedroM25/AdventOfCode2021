@@ -6,7 +6,7 @@ def calc():
     hor_pos = 0
     final_depth = 0
     with open("../input.txt", "r") as f:
-        for line in f.readlines():
+        for line in f:
             line_split = line.removesuffix("\n").split(" ")
             val = int(line_split[1])
             if line_split[0] == "forward":
