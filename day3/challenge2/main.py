@@ -15,7 +15,7 @@ def main():
     return o2_rating * co2_rating
 
 
-def calculate_rating(all_lines, num_columns, comparasion):
+def calculate_rating(all_lines, num_columns, comparison):
     curr_lines = all_lines
     for i in range(num_columns + 1):
 
@@ -30,7 +30,7 @@ def calculate_rating(all_lines, num_columns, comparasion):
             if line[i] == "1":
                 ones += 1
 
-        curr_winner = comparasion(ones, zeros)
+        curr_winner = comparison(ones, zeros)
 
         tmp = []
         for line in curr_lines:
