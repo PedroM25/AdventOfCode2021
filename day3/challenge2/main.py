@@ -6,16 +6,16 @@ def main():
 
     # o2
     o2_lambda = lambda ones, zeros: "1" if ones >= zeros else "0"
-    o2_rating = calculateRating(all_lines, num_columns, o2_lambda)
+    o2_rating = calculate_rating(all_lines, num_columns, o2_lambda)
 
     # co2
     co2_lambda = lambda ones, zeros: "0" if ones >= zeros else "1"
-    co2_rating = calculateRating(all_lines, num_columns, co2_lambda)
+    co2_rating = calculate_rating(all_lines, num_columns, co2_lambda)
 
     return o2_rating * co2_rating
 
 
-def calculateRating(all_lines, num_columns, comparasion):
+def calculate_rating(all_lines, num_columns, comparasion):
     curr_lines = all_lines
     for i in range(num_columns + 1):
 
