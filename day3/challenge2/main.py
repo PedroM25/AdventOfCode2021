@@ -4,53 +4,40 @@ def main():
 
     num_columns = len(all_lines[0])
 
-    # for o2
-    curr_oxygen_lines = all_lines
-    for i in range(num_columns+1):
+    # o2
+    o2_lambda = lambda ones, zeros: "1" if ones >= zeros else "0"
+    o2_rating = calculateRating(all_lines, num_columns, o2_lambda)
 
-        if len(curr_oxygen_lines) == 1:
+    # co2
+    co2_lambda = lambda ones, zeros: "0" if ones >= zeros else "1"
+    co2_rating = calculateRating(all_lines, num_columns, co2_lambda)
+
+    return o2_rating * co2_rating
+
+
+def calculateRating(all_lines, num_columns, comparasion):
+    curr_lines = all_lines
+    for i in range(num_columns + 1):
+
+        if len(curr_lines) == 1:
             break
 
         zeros = 0
         ones = 0
-        for line in curr_oxygen_lines:
+        for line in curr_lines:
             if line[i] == "0":
                 zeros += 1
             if line[i] == "1":
                 ones += 1
 
-        curr_oxygen_winner = "1" if ones >= zeros else "0"
+        curr_winner = comparasion(ones, zeros)
 
         tmp = []
-        for line in curr_oxygen_lines:
-            if line[i] == curr_oxygen_winner:
+        for line in curr_lines:
+            if line[i] == curr_winner:
                 tmp.append(line)
-        curr_oxygen_lines = tmp
-
-    # for co2
-    curr_co2_lines = all_lines
-    for i in range(num_columns+1):
-
-        if len(curr_co2_lines) == 1:
-            break
-
-        zeros = 0
-        ones = 0
-        for line in curr_co2_lines:
-            if line[i] == "0":
-                zeros += 1
-            if line[i] == "1":
-                ones += 1
-
-        curr_co2_winner = "0" if ones >= zeros else "1"
-
-        tmp = []
-        for line in curr_co2_lines:
-            if line[i] == curr_co2_winner:
-                tmp.append(line)
-        curr_co2_lines = tmp
-
-    return int(curr_oxygen_lines[0], 2) * int(curr_co2_lines[0], 2)
+        curr_lines = tmp
+    return int(curr_lines[0], 2)
 
 
 if __name__ == "__main__":
