@@ -64,14 +64,20 @@ bingo_numbers = []
 # the first card that wins
 def main():
     read_file()
+    winner_cards = [False] * len(all_bingo_cards)
     for number in bingo_numbers:
         for card_no in range(len(all_bingo_cards)):
+            if winner_cards[card_no]:
+                continue
+
             pos = pos_in_card(card_no, number)
             if pos == ():
                 continue
 
             if is_winner_card(card_no, pos):
-                return int(number) * add_all_unmarked_numbers(card_no)
+                winner_cards[card_no] = True
+                if all(winner_cards):
+                    return int(number) * add_all_unmarked_numbers(card_no)
 
 
 if __name__ == "__main__":
